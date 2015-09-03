@@ -52,7 +52,7 @@ class basicInformationManager
             $Education = $obj->getEducation();
             $Designation = $obj->getDesignation();
             $UpdateDate = $obj->getUpdateDate();
-            $sql = "update tblbasicinformation set FirstName, LastName, FatherName, DOB, Education, Designation, UpdateDate where UserID=?";
+            $sql = "update tblbasicinformation set FirstName=?, LastName=?, FatherName=?, DOB=?, Education=?, Designation=?, UpdateDate=? where UserID=?";
             $query = $this->cont->Connect()->prepare($sql);
             $query->execute(array($FirstName, $LastName, $FatherName, $DOB, $Education, $Designation, $UpdateDate, $UserID));
             if(!is_null($query))

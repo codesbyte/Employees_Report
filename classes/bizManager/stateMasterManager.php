@@ -17,9 +17,9 @@ class stateMasterManager
             $query = $this->cont->Connect()->prepare($sql);
             $query->execute(array($CountryID));
             $arr = new ArrayIterator();
-            $stateMasterObj = new stateMasterObject();
             while ($value = $query->fetch(PDO::FETCH_ASSOC))
             {
+                $stateMasterObj = new stateMasterObject();
                 $stateMasterObj->setStateID($value['StateID']);
                 $stateMasterObj->setStateName($value['StateName']);
                 $stateMasterObj->setCountryID($value['CountryID']);

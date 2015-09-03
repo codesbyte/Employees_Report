@@ -17,10 +17,9 @@ class cityMasterManager
             $query = $this->cont->Connect()->prepare($sql);
             $query->execute(array($StateId));
             $arr = new ArrayIterator();
-            $cityMasterObj = new cityMasterObject();
-            
             while ($value = $query->fetch(PDO::FETCH_ASSOC))
             {
+                $cityMasterObj = new cityMasterObject();
                 $cityMasterObj->setCityID($value['CityID']);
                 $cityMasterObj->setCityName($value['CityName']);
                 $cityMasterObj->setStateID($value['StateID']);

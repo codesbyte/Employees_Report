@@ -69,7 +69,7 @@ class memberTaskManager
         }
     }
     
-    public function selectMemberTask($TaskID) 
+    public function selectMemberTaskByTaskID($TaskID) 
     {
         try 
         {
@@ -106,13 +106,75 @@ class memberTaskManager
     {
         try 
         {
-            $sql = "select * from tblmembertask where UserID=?";
+            $sql = "select * from tblmembertask where UserID=? ORDER BY TaskID DESC";
             $query = $this->cont->Connect()->prepare($sql);
             $query->execute(array($UserId));
             $arr = new ArrayIterator();
-            $memberTaskObj = new memberTaskObject();
             while ($value = $query->fetch(PDO::FETCH_ASSOC))
             {
+                $memberTaskObj = new memberTaskObject();
+                $memberTaskObj->setTaskID($value['TaskID']);
+                $memberTaskObj->setUserID($value['UserID']);
+                $memberTaskObj->setTaskDate($value['TaskDate']);
+                $memberTaskObj->setIntime($value['Intime']);
+                $memberTaskObj->setOuttime($value['Outtime']);
+                $memberTaskObj->setTaskDescription($value['TaskDescription']);
+                $memberTaskObj->setIsActive($value['IsActive']);
+                $memberTaskObj->setCreateDate($value['CreateDate']);
+                $memberTaskObj->setUpdateDate($value['UpdateDate']);
+                $arr->append($memberTaskObj);
+            }
+            return $arr;
+        }
+        catch (PDOException $e) 
+        {
+            throw new PDOException($e->getMessage());
+        }
+    }
+    
+    public function selectTodayTask($Date) 
+    {
+        try 
+        {
+            //$sql = "select * from tblmembertask where TaskDate=? OR CreateDate=?";
+            $sql = "SELECT * FROM tblmembertask WHERE CreateDate LIKE '$Date' OR TaskDate LIKE '$Date'";
+            $query = $this->cont->Connect()->prepare($sql);
+            $query->execute();
+            $arr = new ArrayIterator();
+            while ($value = $query->fetch(PDO::FETCH_ASSOC))
+            {
+                $memberTaskObj = new memberTaskObject();
+                $memberTaskObj->setTaskID($value['TaskID']);
+                $memberTaskObj->setUserID($value['UserID']);
+                $memberTaskObj->setTaskDate($value['TaskDate']);
+                $memberTaskObj->setIntime($value['Intime']);
+                $memberTaskObj->setOuttime($value['Outtime']);
+                $memberTaskObj->setTaskDescription($value['TaskDescription']);
+                $memberTaskObj->setIsActive($value['IsActive']);
+                $memberTaskObj->setCreateDate($value['CreateDate']);
+                $memberTaskObj->setUpdateDate($value['UpdateDate']);
+                $arr->append($memberTaskObj);
+            }
+            return $arr;
+        }
+        catch (PDOException $e) 
+        {
+            throw new PDOException($e->getMessage());
+        }
+    }
+    
+    public function selectPreviousTask($Date) 
+    {
+        try 
+        {
+            //$sql = "SELECT * FROM tblmembertask WHERE CreateDate NOT LIKE '$Date' OR TaskDate NOT LIKE '$Date'";
+            $sql = "SELECT * FROM tblmembertask WHERE TaskDate NOT LIKE '$Date'";
+            $query = $this->cont->Connect()->prepare($sql);
+            $query->execute();
+            $arr = new ArrayIterator();
+            while ($value = $query->fetch(PDO::FETCH_ASSOC))
+            {
+                $memberTaskObj = new memberTaskObject();
                 $memberTaskObj->setTaskID($value['TaskID']);
                 $memberTaskObj->setUserID($value['UserID']);
                 $memberTaskObj->setTaskDate($value['TaskDate']);

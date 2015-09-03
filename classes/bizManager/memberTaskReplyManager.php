@@ -43,10 +43,10 @@ class memberTaskReplyManager
             $sql = "select * from tblmembertaskreply where TaskID=?";
             $query = $this->cont->Connect()->prepare($sql);
             $query->execute(array($TaskID));
-            $memberTaskReplyObj = new memberTaskReplyObject();
             $arr = new ArrayIterator();
             while ($value = $query->fetch(PDO::FETCH_ASSOC))
             {
+                $memberTaskReplyObj = new memberTaskReplyObject();
                 $memberTaskReplyObj->setTaskReplyID($value['TaskReplyID']);
                 $memberTaskReplyObj->setTaskID($value['TaskID']);
                 $memberTaskReplyObj->setMemberID($value['MemberID']);

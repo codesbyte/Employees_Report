@@ -75,7 +75,7 @@ if (empty($_SESSION['UserID'])) {
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Today Task</h2>
-                    <ul class="nav navbar-right panel_toolbox">
+                    <!--<ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
                         <li class="dropdown">
@@ -89,46 +89,49 @@ if (empty($_SESSION['UserID'])) {
                         </li>
                         <li><a class="close-link"><i class="fa fa-close"></i></a>
                         </li>
-                    </ul>
+                    </ul>-->
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                    <br /><!-- form default id="demo-form2" -->
+                    <form id="sendTask" method="post" action="<?php echo $con->getBaseUrl()."userAction.php?a=sendTask"; ?>" data-parsley-validate class="form-horizontal form-label-left">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Task Date <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                <input id="birthday" name="txtTaskDate" class="date-picker form-control col-md-7 col-xs-12" type="text">
+                                <label class="error" for="birthday" generated="true" style="color: Red;  font-weight: normal;text-align: left;width: 100%;"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">In Time <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="single-input_1" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" name="txtInTime" id="single-input_1" class="form-control col-md-7 col-xs-12">
+                                <label class="error" for="single-input_1" generated="true" style="color: Red;  font-weight: normal;text-align: left;width: 100%;"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Out Time <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="single-input_2" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" id="single-input_2" name="txtOutTime" class="form-control col-md-7 col-xs-12">
+                                <label class="error" for="single-input_2" generated="true" style="color: Red;  font-weight: normal;text-align: left;width: 100%;"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Description <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>
+                                <textarea id="message" class="form-control" name="txtTaskDescription" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>
+                                <label class="error" for="message" generated="true" style="color: Red;  font-weight: normal;text-align: left;width: 100%;"></label>
                             </div>
                         </div>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button type="submit" class="btn btn-primary">Cancel</button>
                                 <button type="submit" class="btn btn-success">Submit</button>
+                                <button type="reset" class="btn btn-primary">Reset</button>
                             </div>
                         </div>
 
@@ -167,7 +170,8 @@ if (empty($_SESSION['UserID'])) {
     <div id="notif-group" class="tabbed_notifications"></div>
 </div>
 
-
+<script src="<?php echo $con->getBaseUrl() . "assets/js/jquery.validate.min.js"; ?>"></script>
+<script src="<?php echo $con->getBaseUrl() . "assets/js/jQueryValidation.js"; ?>"></script>
 
 <script src="<?php echo $con->getBaseUrl() . "assets/js/bootstrap.min.js" ?>"></script>
 <!-- chart js -->
@@ -397,8 +401,18 @@ $('input').prop('readOnly', true);
 <script type="text/javascript" src="<?php echo $con->getBaseUrl()."time_pick/assets/js/highlight.min.js" ?>"></script>
 <!-- time pick test code close -->
 
-
-
+<?php
+    if(!empty($_SESSION['task_send_succ']))
+    {
+        ?><script>alert("<?php echo $_SESSION['task_send_succ']; ?>")</script><?php
+            unset($_SESSION['task_send_succ']);
+    }
+    if(!empty($_SESSION['task_send_err']))
+    {
+        ?><script>alert("<?php echo $_SESSION['task_send_err']; ?>")</script><?php
+            unset($_SESSION['task_send_err']);
+    }
+?>
 </body>
 
 </html>

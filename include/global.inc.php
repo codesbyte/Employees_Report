@@ -4,6 +4,7 @@ session_start();
 
 require_once 'classes/DB.php';
 require_once 'classes/config.php';
+require_once 'mailer.php';
 
 /******* Biz Object start *******/
 require_once 'classes/bizObject/basicInformationObject.php';

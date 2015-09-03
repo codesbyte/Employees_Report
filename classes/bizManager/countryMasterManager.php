@@ -17,9 +17,9 @@ class countryMasterManager
             $query = $this->cont->Connect()->prepare($sql);
             $query->execute();
             $arr = new ArrayIterator();
-            $countryMasterObj = new countryMasterObject();
             while ($value = $query->fetch(PDO::FETCH_ASSOC))
             {
+                $countryMasterObj = new countryMasterObject();
                 $countryMasterObj->setCountryID($value['CountryID']);
                 $countryMasterObj->setCountryName($value['CountryName']);
                 $countryMasterObj->setCountryCode($value['CountryCode']);

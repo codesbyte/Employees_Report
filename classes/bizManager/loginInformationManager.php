@@ -66,6 +66,81 @@ class loginInformationManager
         }
     }
     
+    public function updateEmail($obj) 
+    {
+        try 
+        {
+            $UserID = $obj->getUserID();
+            $Email = $obj->getEmail();
+            $UpdateDate = $obj->getUpdateDate();
+            $sql = "update tbllogininformation set Email=?, UpdateDate=? where UserID=?";
+            $query = $this->cont->Connect()->prepare($sql);
+            $query->execute(array($Email, $UpdateDate, $UserID));
+            if(!is_null($query))
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
+        catch (PDOException $e) 
+        {
+            throw new PDOException($e->getMessage());
+        }
+    }
+    
+    public function updatePassword($obj) 
+    {
+        try 
+        {
+            $UserID = $obj->getUserID();
+            $Password = $obj->getPassword();
+            $UpdateDate = $obj->getUpdateDate();
+            $sql = "update tbllogininformation set tbllogininformation.Password=?, UpdateDate=? where UserID=?";
+            $query = $this->cont->Connect()->prepare($sql);
+            $query->execute(array($Password, $UpdateDate, $UserID));
+            if(!is_null($query))
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
+        catch (PDOException $e) 
+        {
+            throw new PDOException($e->getMessage());
+        }
+    }
+    
+    public function updateVrfCodeByUserId($obj) 
+    {
+        try 
+        {
+            $UserID = $obj->getUserID();
+            $VrfCode = $obj->getVrfCode();
+            $UpdateDate = $obj->getUpdateDate();
+            $sql = "update tbllogininformation set VrfCode=?, UpdateDate=? where UserID=?";
+            $query = $this->cont->Connect()->prepare($sql);
+            $query->execute(array($VrfCode, $UpdateDate, $UserID));
+            if(!is_null($query))
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
+        catch (PDOException $e) 
+        {
+            throw new PDOException($e->getMessage());
+        }
+    }
+    
     public function selectLoginInformation($UserId) 
     {
         try 
@@ -99,11 +174,33 @@ class loginInformationManager
         }
     }
     
+    public function getAllUserId() 
+    {
+        try 
+        {
+            $sql = "select * from tbllogininformation where MemberID != 1";
+            $query = $this->cont->Connect()->prepare($sql);
+            $query->execute();
+            $arr = new ArrayIterator();
+            while ($value = $query->fetch(PDO::FETCH_ASSOC))
+            {
+                $loginInformationObj = new loginInformationObject();
+                $loginInformationObj->setUserID($value['UserID']);
+                $arr->append($loginInformationObj);
+            }
+            return $arr;
+        }
+        catch (PDOException $e) 
+        {
+            throw new PDOException($e->getMessage());
+        }
+    }
+    
     public function getPasswordByEmail($Email) 
     {
         try 
         {
-            $sql = "select * from tbllogininformation where Email=?";
+            $sql = "SELECT * FROM tbllogininformation WHERE Email=?";
             $query = $this->cont->Connect()->prepare($sql);
             $query->execute(array($Email));
             $loginInformationObj = new loginInformationObject();
