@@ -36,7 +36,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Employees_Report</title>
-
+        <link rel="icon" href="<?php echo $con->getBaseUrl() . "assets/images/16x16.png"; ?>" type="image/gif" sizes="16x16">
         <!-- Bootstrap core CSS -->
         <link href="<?php echo $con->getBaseUrl() . "assets/css/bootstrap.min.css"; ?>" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.8/css/dataTables.bootstrap.min.css" rel="stylesheet">
