@@ -40,7 +40,7 @@
                             <div>
                                 <input type="hidden" name="txtUserId" value="<?php echo (isset($_GET['sessionId']) ? (!empty($_GET['sessionId']) ? $_GET['sessionId'] : "") : ""); ?>" class="form-control" required="" />
                                 <input type="hidden" name="txtVrfCode" value="<?php echo (isset($_GET['vrfCode']) ? (!empty($_GET['vrfCode']) ? $_GET['vrfCode'] : "") : ""); ?>" class="form-control" required="" />
-                                <input type="password" id="txtNewPassword" name="txtNewPassword" class="form-control" placeholder="New password" style="margin-bottom: 0px;" required="" />
+                                <input type="password" id="txtNewPassword" name="txtNewPassword" class="form-control" placeholder="New password" style="margin-bottom: 10px;" required="" />
                                 <label class="error" for="txtNewPassword" generated="true" style="color: Red;  font-weight: normal;text-align: left;width: 100%;"></label>
                             </div>
                             <div>

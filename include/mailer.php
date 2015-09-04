@@ -14,7 +14,7 @@ class mailer
                                     <tbody>
                                         <tr>
                                             <td valign='bottom' style='font:normal 11px arial;color:#999;line-height:12px;padding:0 0 0 10px'>
-                                                <a href='http://report.codesbyte.com/index.php'><img src='http://report.codesbyte.com/assets/images/logo.png' alt=''/></a>
+                                                <a href='http://report.codesbyte.com/index.php'><img src='http://report.codesbyte.com/assets/images/40x40.png' alt=''/></a>
                                                 <br>
                                                 You have received this mail as a member of report.codesbyte.com
                                             </td>
@@ -77,7 +77,7 @@ class mailer
                                     <tbody>
                                         <tr>
                                             <td valign='bottom' style='font:normal 11px arial;color:#999;line-height:12px;padding:0 0 0 10px'>
-                                                <a href='http://report.codesbyte.com/index.php'><img src='http://report.codesbyte.com/assets/images/logo.png' alt=''/></a>
+                                                <a href='http://report.codesbyte.com/index.php'><img src='http://report.codesbyte.com/assets/images/40x40.png' alt=''/></a>
                                                 <br>
                                                 You have received this mail as a member of report.codesbyte.com
                                             </td>
@@ -144,7 +144,7 @@ class mailer
                                         <tr>
                                             <td valign='center' height='60' align='center' colspan='2'>
                                                 <a target='_blank' style='outline:none' href='http://report.codesbyte.com/index.php'>
-                                                   <img class='CToWUd' width='124' vspace='0' hspace='0' height='38' border='0' title='Login' alt='Login' src=http://report.codesbyte.com/assets/images/btn.gif'>
+                                                   <img class='CToWUd' width='124' vspace='0' hspace='0' height='38' border='0' title='Login' alt='Login' src='http://report.codesbyte.com/assets/images/btn.gif'>
                                                 </a>
                                             </td>
                                         </tr>
@@ -167,7 +167,7 @@ class mailer
                                     <tbody>
                                         <tr>
                                             <td valign='bottom' style='font:normal 11px arial;color:#999;line-height:12px;padding:0 0 0 10px'>
-                                                <a href='http://report.codesbyte.com/index.php'><img src='http://report.codesbyte.com/assets/images/logo.png' alt=''/></a>
+                                                <a href='http://report.codesbyte.com/index.php'><img src='http://report.codesbyte.com/assets/images/40x40.png' alt=''/></a>
                                                 <br>
                                                 You have received this mail as a member of report.codesbyte.com
                                             </td>

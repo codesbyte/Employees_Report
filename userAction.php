@@ -92,6 +92,7 @@ switch ($a)
                 
         if($loginInformationMgr->updateEmail($loginInformationObj))
         {
+            $_SESSION['Email'] = $Email;
             if($basicInformationMgr->updateBasicInformation($basicInformationObj))
             {
                 if($contactDetailsMgr->updateContactDetails($contactDetailsObj))

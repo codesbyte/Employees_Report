@@ -25,6 +25,11 @@ $FirstName = $basicInfoObj->getFirstName();
 $LastName = $basicInfoObj->getLastName();
 $FatherName = $basicInfoObj->getFatherName();
 $DOB = $basicInfoObj->getDOB();
+if(!is_null($DOB))
+{
+    $date = explode("-", $DOB);
+    $d_o_b = $date[1]."/".$date[2]."/".$date[0]; 
+}
 $Education = $basicInfoObj->getEducation();
 $Designation = $basicInfoObj->getDesignation();
 
@@ -193,7 +198,7 @@ $ContactNo = $contactObj->getContactNo();
                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dob">DOB 
                                                                 </label>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" value="<?php echo (!empty($DOB) ? $DOB : ""); ?>" name="txtDob" type="text">
+                                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" value="<?php echo (!empty($d_o_b) ? (!is_null($d_o_b) ? $d_o_b : "") : ""); ?>" name="txtDob" type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">

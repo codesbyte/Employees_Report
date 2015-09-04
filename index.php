@@ -34,7 +34,7 @@
                         <form action="<?php echo $con->getBaseUrl()."userAction.php?a=login"; ?>" method="post" id="loginForm">
                             <h1>Login Form</h1>
                             <div>
-                                <input type="text" name="txtEmail" class="form-control" placeholder="Username" style="margin-bottom: 0px;" />
+                                <input type="text" name="txtEmail" class="form-control" placeholder="Username" style="margin-bottom: 10px;" />
                                 <label class="error" for="txtEmail" generated="true" style="color: Red;  font-weight: normal;text-align: left;width: 100%;"></label>
                             </div>
                             <div>
@@ -58,6 +58,7 @@
                 </div>
             </div>
         </div>
+        
         <script src="<?php echo $con->getBaseUrl() . "assets/js/jquery.validate.min.js"; ?>"></script>
         <script src="<?php echo $con->getBaseUrl() . "assets/js/jQueryValidation.js"; ?>"></script>
         <?php 

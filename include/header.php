@@ -11,7 +11,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <!-- menu prile quick info -->
-                        <div class="profile">
+                        <div class="profile" style="margin-bottom: 75px;">
                             <div class="profile_pic">
                                 <img src="<?php echo $con->getBaseUrl() . "assets/images/img.jpg"; ?>" alt="..." class="img-circle profile_img">
                             </div>
